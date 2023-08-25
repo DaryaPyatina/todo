@@ -1,26 +1,26 @@
-import React, { useState } from 'react';
-import './task.css';
-import { formatDistanceToNow } from 'date-fns';
+import { useState } from 'react'
+import './task.css'
+import { formatDistanceToNow } from 'date-fns'
 
 const Task = ({ task, deleteTask, toggleChecked, editTodo }) => {
-  const [edit, setEdit] = useState(false);
-  const [value, setValue] = useState(task.name);
+  const [edit, setEdit] = useState(false)
+  const [value, setValue] = useState(task.name)
 
   const onSubmit = (e) => {
-    e.preventDefault();
+    e.preventDefault()
     if (value.trim()) {
-      editTodo(task.id, value);
-      setEdit(false);
+      editTodo(task.id, value)
+      setEdit(false)
     }
-  };
+  }
 
   const toggleEdit = () => {
-    setEdit((prev) => !prev);
-  };
+    setEdit((prev) => !prev)
+  }
 
   const onDelete = () => {
-    deleteTask(task.id);
-  };
+    deleteTask(task.id)
+  }
 
   return (
     <>
@@ -32,7 +32,7 @@ const Task = ({ task, deleteTask, toggleChecked, editTodo }) => {
               type="checkbox"
               checked={task.checked}
               onChange={() => {
-                toggleChecked(task.id);
+                toggleChecked(task.id)
               }}
             />
             <label>
@@ -68,14 +68,14 @@ const Task = ({ task, deleteTask, toggleChecked, editTodo }) => {
               className="edit"
               value={value}
               onChange={(e) => {
-                setValue(e.target.value);
+                setValue(e.target.value)
               }}
             />
           </form>
         </li>
       )}
     </>
-  );
-};
+  )
+}
 
-export default Task;
+export default Task

@@ -1,6 +1,4 @@
-import React from "react";
-
-import "./footer.css";
+import './footer.css'
 
 const Footer = ({ children, clearComplited, items }) => {
   return (
@@ -10,13 +8,13 @@ const Footer = ({ children, clearComplited, items }) => {
       <button
         className="clear-completed"
         onClick={() => {
-          clearComplited();
+          clearComplited()
         }}
       >
         Clear completed
       </button>
     </footer>
-  );
-};
+  )
+}
 
-export default Footer;
+export default Footer

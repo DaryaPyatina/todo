@@ -1,16 +1,16 @@
-import { useState } from "react";
-import "./new-task-form.css";
+import { useState } from 'react'
+import './new-task-form.css'
 
 const NewTaskForm = ({ addTask }) => {
-  const [value, setValue] = useState("");
+  const [value, setValue] = useState('')
 
   const onSubmit = (e) => {
-    e.preventDefault();
+    e.preventDefault()
     if (value.trim()) {
-      addTask(value);
-      setValue("");
+      addTask(value)
+      setValue('')
     }
-  };
+  }
 
   return (
     <header className="header">
@@ -22,12 +22,12 @@ const NewTaskForm = ({ addTask }) => {
           autoFocus
           value={value}
           onChange={(e) => {
-            setValue(e.target.value);
+            setValue(e.target.value)
           }}
         />
       </form>
     </header>
-  );
-};
+  )
+}
 
-export default NewTaskForm;
+export default NewTaskForm

@@ -1,13 +1,13 @@
-import "./tasks-filter.css";
+import './tasks-filter.css'
 
 const TasksFilter = ({ filter, setCurrentFilter }) => {
   return (
     <ul className="filters">
       <li>
         <button
-          className={filter === "all" ? "selected" : ""}
+          className={filter === 'all' ? 'selected' : ''}
           onClick={() => {
-            setCurrentFilter("all");
+            setCurrentFilter('all')
           }}
         >
           All
@@ -15,9 +15,9 @@ const TasksFilter = ({ filter, setCurrentFilter }) => {
       </li>
       <li>
         <button
-          className={filter === "active" ? "selected" : ""}
+          className={filter === 'active' ? 'selected' : ''}
           onClick={() => {
-            setCurrentFilter("active");
+            setCurrentFilter('active')
           }}
         >
           Active
@@ -25,16 +25,16 @@ const TasksFilter = ({ filter, setCurrentFilter }) => {
       </li>
       <li>
         <button
-          className={filter === "completed" ? "selected" : ""}
+          className={filter === 'completed' ? 'selected' : ''}
           onClick={() => {
-            setCurrentFilter("completed");
+            setCurrentFilter('completed')
           }}
         >
           Completed
         </button>
       </li>
     </ul>
-  );
-};
+  )
+}
 
-export default TasksFilter;
+export default TasksFilter

@@ -1,93 +1,94 @@
-import NewTaskForm from '../new-task-form/new-task-form';
-import Task from '../task/task';
-import TaskList from '../task-list/task-list';
-import Footer from '../footer/footer';
-import TasksFilter from '../tasks-filter/tasks-filter';
-import { useState } from 'react';
+import { useState } from 'react'
 
-import './app.css';
+import NewTaskForm from '../new-task-form/new-task-form'
+import Task from '../task/task'
+import TaskList from '../task-list/task-list'
+import Footer from '../footer/footer'
+import TasksFilter from '../tasks-filter/tasks-filter'
+
+import './app.css'
 
 function App() {
-  const [data, setData] = useState([]);
+  const [data, setData] = useState([])
 
-  const [filter, setFilter] = useState('all');
+  const [filter, setFilter] = useState('all')
 
   const setCurrentFilter = (filterName) => {
-    setFilter(filterName);
+    setFilter(filterName)
 
     if (filterName === 'active') {
       const arr = data.map((elem) => {
         if (!elem.checked) {
-          return { ...elem, visible: true };
+          return { ...elem, visible: true }
         }
 
-        return { ...elem, visible: false };
-      });
-      setData(arr);
+        return { ...elem, visible: false }
+      })
+      setData(arr)
     }
 
     if (filterName === 'completed') {
       const arr = data.map((elem) => {
         if (elem.checked) {
-          return { ...elem, visible: true };
+          return { ...elem, visible: true }
         }
-        return { ...elem, visible: false };
-      });
-      setData(arr);
+        return { ...elem, visible: false }
+      })
+      setData(arr)
     }
 
     if (filterName === 'all') {
       const arr = data.map((elem) => {
-        return { ...elem, visible: true };
-      });
-      setData(arr);
+        return { ...elem, visible: true }
+      })
+      setData(arr)
     }
-  };
+  }
 
   const addTask = (name) => {
     setData((arr) => {
-      const last = arr[arr.length - 1];
+      const last = arr[arr.length - 1]
       const obj = {
         name: name,
         id: arr.length > 0 ? last.id + 1 : 1,
         checked: false,
         visible: filter !== 'completed' ? true : false,
         createDate: new Date(),
-      };
+      }
 
-      return [...arr, obj];
-    });
-  };
+      return [...arr, obj]
+    })
+  }
 
   const toggleChecked = (id) => {
     setData(
       data.map((elem) => {
         if (elem.id === id) {
-          return { ...elem, checked: !elem.checked };
+          return { ...elem, checked: !elem.checked }
         }
-        return elem;
+        return elem
       })
-    );
-  };
+    )
+  }
 
   const deleteTask = (id) => {
-    setData(data.filter((elem) => elem.id !== id));
-  };
+    setData(data.filter((elem) => elem.id !== id))
+  }
 
   const clearComplited = () => {
-    setData(data.filter((elem) => !elem.checked));
-  };
+    setData(data.filter((elem) => !elem.checked))
+  }
 
   const editTodo = (id, text) => {
     const arr = data.map((elem) => {
       if (id !== elem.id) {
-        return elem;
+        return elem
       }
 
-      return { ...elem, name: text };
-    });
-    setData(arr);
-  };
+      return { ...elem, name: text }
+    })
+    setData(arr)
+  }
 
   return (
     <section className="todoapp">
@@ -103,7 +104,7 @@ function App() {
         </Footer>
       </section>
     </section>
-  );
+  )
 }
 
-export default App;
+export default App

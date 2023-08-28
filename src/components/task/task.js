@@ -50,7 +50,6 @@ const Task = ({ task, deleteTask, toggleChecked, editTodo }) => {
       ) : (
         <li className="editing">
           <div className="view">
-            <input className="toggle" type="checkbox" />
             <label>
               <span className="description">{task.name}</span>
               <span className="created">
@@ -67,6 +66,10 @@ const Task = ({ task, deleteTask, toggleChecked, editTodo }) => {
               type="text"
               className="edit"
               value={value}
+              autoFocus
+              onBlur={() => {
+                setEdit(false)
+              }}
               onChange={(e) => {
                 setValue(e.target.value)
               }}

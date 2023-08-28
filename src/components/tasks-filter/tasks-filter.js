@@ -1,38 +1,24 @@
 import './tasks-filter.css'
 
 const TasksFilter = ({ filter, setCurrentFilter }) => {
+  const filters = ['all', 'active', 'completed']
+  const obj = { all: 'All', active: 'Active', completed: 'Completed' }
   return (
     <ul className="filters">
-      <li>
-        <button
-          className={filter === 'all' ? 'selected' : ''}
-          onClick={() => {
-            setCurrentFilter('all')
-          }}
-        >
-          All
-        </button>
-      </li>
-      <li>
-        <button
-          className={filter === 'active' ? 'selected' : ''}
-          onClick={() => {
-            setCurrentFilter('active')
-          }}
-        >
-          Active
-        </button>
-      </li>
-      <li>
-        <button
-          className={filter === 'completed' ? 'selected' : ''}
-          onClick={() => {
-            setCurrentFilter('completed')
-          }}
-        >
-          Completed
-        </button>
-      </li>
+      {filters.map((elem) => {
+        return (
+          <li key={elem}>
+            <button
+              className={filter === elem ? 'selected' : ''}
+              onClick={() => {
+                setCurrentFilter(elem)
+              }}
+            >
+              {obj[elem]}
+            </button>
+          </li>
+        )
+      })}
     </ul>
   )
 }

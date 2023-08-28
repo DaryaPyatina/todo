@@ -16,32 +16,33 @@ function App() {
   const setCurrentFilter = (filterName) => {
     setFilter(filterName)
 
-    if (filterName === 'active') {
-      const arr = data.map((elem) => {
-        if (!elem.checked) {
-          return { ...elem, visible: true }
-        }
-
-        return { ...elem, visible: false }
-      })
-      setData(arr)
-    }
-
-    if (filterName === 'completed') {
-      const arr = data.map((elem) => {
-        if (elem.checked) {
-          return { ...elem, visible: true }
-        }
-        return { ...elem, visible: false }
-      })
-      setData(arr)
-    }
-
-    if (filterName === 'all') {
-      const arr = data.map((elem) => {
-        return { ...elem, visible: true }
-      })
-      setData(arr)
+    switch (filterName) {
+      case 'active':
+        setData((prev) => {
+          return prev.map((elem) => {
+            if (!elem.checked) {
+              return { ...elem, visible: true }
+            }
+            return { ...elem, visible: false }
+          })
+        })
+        break
+      case 'completed':
+        setData((prev) => {
+          return prev.map((elem) => {
+            if (elem.checked) {
+              return { ...elem, visible: true }
+            }
+            return { ...elem, visible: false }
+          })
+        })
+        break
+      default:
+        setData((prev) => {
+          return prev.map((elem) => {
+            return { ...elem, visible: true }
+          })
+        })
     }
   }
 

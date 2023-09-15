@@ -46,7 +46,7 @@ function App() {
     }
   }
 
-  const addTask = (name) => {
+  const addTask = (name, min, sec) => {
     setData((arr) => {
       const last = arr[arr.length - 1]
       const obj = {
@@ -55,6 +55,10 @@ function App() {
         checked: false,
         visible: filter !== 'completed' ? true : false,
         createDate: new Date(),
+        time: {
+          min,
+          sec,
+        },
       }
 
       return [...arr, obj]

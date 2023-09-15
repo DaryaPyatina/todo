@@ -2,9 +2,20 @@ import { useState } from 'react'
 import './task.css'
 import { formatDistanceToNow } from 'date-fns'
 
+import Timer from '../timer/timer'
+
 const Task = ({ task, deleteTask, toggleChecked, editTodo }) => {
   const [edit, setEdit] = useState(false)
   const [value, setValue] = useState(task.name)
+  const [timerStatus, setTimerStatus] = useState('stop')
+
+  const onStartTask = () => {
+    setTimerStatus('play')
+  }
+
+  const onPauseTask = () => {
+    setTimerStatus('pause')
+  }
 
   const onSubmit = (e) => {
     e.preventDefault()
@@ -36,7 +47,13 @@ const Task = ({ task, deleteTask, toggleChecked, editTodo }) => {
               }}
             />
             <label>
-              <span className={`description ${task.checked ? 'line-through' : ''}`}>{task.name}</span>
+              <span className={`title  ${task.checked ? 'line-through' : ''}`}>{task.name}</span>
+              <span className="description">
+                <button onClick={onStartTask} className="icon icon-play "></button>
+                <button onClick={onPauseTask} className="icon icon-pause"></button>
+                <Timer timerStatus={timerStatus} timer={task.time} />
+              </span>
+
               <span className="created">
                 {formatDistanceToNow(Date.parse(task.createDate), {
                   addSuffix: true,

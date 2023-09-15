@@ -20,8 +20,14 @@
   },
   "plugins": ["react", "prettier", "import"],
   "rules": {
+    "no-unused-vars": "warn",
     "indent": "off",
-    "prettier/prettier": "error",
+    "prettier/prettier": [
+      "error",
+      {
+        "endOfLine": "auto"
+      }
+    ],
     "linebreak-style": [0, "unix"],
     "quotes": ["error", "single"],
     "semi": ["error", "never"],
